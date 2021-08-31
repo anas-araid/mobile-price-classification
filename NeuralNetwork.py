@@ -29,7 +29,7 @@ X_test = np.array(test_input)
 y_test = np.array(test_output)
 
 # n input
-N_FEATURES = range(X_test.shape[1])
+N_FEATURES = X_test.shape[1]
 
 # adam = stochastic gradient optimizer
 mlp = MLPClassifier(
@@ -73,13 +73,13 @@ def get_importanza_feature(j, n):
 
 importance = []
 
-for j in N_FEATURES:
+for j in range(N_FEATURES):
   feature = get_importanza_feature(j, 100)
   importance.append(feature)
 
 plt.figure(figsize=(10, 5))
-plt.bar(N_FEATURES, importance, color="r", alpha=0.7)
-plt.xticks(ticks=N_FEATURES, labels=test_input.columns.tolist(), rotation='vertical')
+plt.bar(range(N_FEATURES), importance, color="r", alpha=0.7)
+plt.xticks(ticks=range(N_FEATURES), labels=test_input.columns.tolist(), rotation='vertical')
 
 plt.subplots_adjust(bottom=0.5)
 
