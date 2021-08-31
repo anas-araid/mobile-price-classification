@@ -35,7 +35,7 @@ N_FEATURES = range(X_test.shape[1])
 mlp = MLPClassifier(
     solver='adam',
     max_iter=100000,
-    hidden_layer_sizes=(18*2, 2),
+    hidden_layer_sizes=(N_FEATURES*2, 2),
     learning_rate_init=0.0001,
 )
 classifier = Pipeline([('scaler', StandardScaler()), ('mlp', mlp)])
